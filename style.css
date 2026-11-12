@@ -1,0 +1,122 @@
+:root {
+    --preto: #111111;
+    --fucsia: #E11D74;
+    --champagne: #E8D5C4;
+    --salvia: #7A9E7E;
+    --offwhite: #FFFBF7;
+    --branco: #FFFFFF;
+    --cinza: #6B6B6B;
+
+    --fonte-titulo: "Playfair Display", serif;
+    --fonte-texto: "Montserrat", sans-serif;
+
+    --largura-sidebar: 260px;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    background-color: var(--offwhite);
+    color: var(--preto);
+    line-height: 1.5;
+}
+
+h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.75rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+ .app {
+    display: grid;
+    grid-template-columns: var(--largura-sidebar) 1fr;
+    min-height: 100vh;
+}
+
+.conteudo {
+    min-width: 0;
+}
+.sidebar {
+    background-color: var(--branco);
+    border-right: 1px solid var(--champagne);
+    padding: 24px 16px;
+}
+
+.sidebar__logo {
+    margin-bottom: 32px;
+}
+
+.nav__link {
+    display: block;
+    padding: 10px 12px;
+    border-left: 4px solid transparent;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.nav__link:hover {
+    background-color: var(--offwhite);
+}
+
+.nav__link--ativo {
+    background-color: var(--champagne);
+    border-left-color: var(--fucsia);
+    font-weight: 600;
+}
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background-color: var(--branco);
+    border-bottom: 1px solid var(--champagne);
+}
+
+.topbar__menu {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+}
+
+.topbar__usuario {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    text-align: right;
+}
+
+.topbar__nome {
+    font-weight: 600;
+}
+
+.topbar__cargo {
+    font-size: 0.8rem;
+    color: var(--cinza);
+}
+.principal {
+    padding: 32px;
+}

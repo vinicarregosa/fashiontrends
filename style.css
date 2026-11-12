@@ -120,3 +120,163 @@ button {
 .principal {
     padding: 32px;
 }
+.cabecalho-tela {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.ferramentas {
+    margin-bottom: 16px;
+}
+
+.campo {
+    width: 100%;
+    max-width: 360px;
+    padding: 10px 14px;
+    border: 1px solid var(--champagne);
+    border-radius: 8px;
+    background-color: var(--branco);
+    font: inherit;
+}
+
+.campo:focus {
+    outline: 2px solid var(--fucsia);
+    outline-offset: 1px;
+}
+
+.botao {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.botao--primario {
+    background-color: var(--fucsia);
+    color: var(--branco);
+}
+
+.botao--primario:hover {
+    opacity: 0.9;
+}
+
+/* 8. Tabela */
+.tabela-wrapper {
+    overflow-x: auto;
+    background-color: var(--branco);
+    border: 1px solid var(--champagne);
+    border-radius: 12px;
+}
+
+.tabela {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+    padding: 12px 14px;
+    text-align: left;
+}
+
+.celula--fixa {
+    white-space: nowrap;
+}
+
+.tabela thead {
+    background-color: var(--preto);
+    color: var(--branco);
+}
+
+.tabela th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.tabela tbody tr {
+    border-top: 1px solid var(--champagne);
+}
+
+.tabela tbody tr:hover {
+    background-color: var(--offwhite);
+}
+
+/* 9. Célula "Produto": foto, nome e selo */
+.produto {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.produto__foto {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--champagne);
+}
+
+.produto__nome {
+    font-weight: 600;
+}
+
+.selo {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background-color: var(--fucsia);
+    color: var(--branco);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* 10. Estoque: bolinha + texto */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status--disponivel::before {
+    background-color: var(--salvia);
+}
+
+.status--esgotado {
+    color: var(--cinza);
+}
+
+.status--esgotado::before {
+    background-color: var(--cinza);
+}
+
+.acao {
+    padding: 4px 8px;
+    border: none;
+    background: none;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.acao--perigo {
+    color: var(--fucsia);
+}
+
+.tabela-rodape {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--cinza);
+}

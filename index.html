@@ -39,13 +39,108 @@
 
         <main class="principal">
             <section id="tela-lista" aria-labelledby="titulo-lista">
-                <h1 id="titulo-lista">Produtos</h1>
-                <p>A lista de produtos vai aparecer aqui.</p>
-            </section>
+                <section id="tela-lista" aria-labelledby="titulo-lista">
 
-            <section id="tela-formulario" aria-labelledby="titulo-formulario" hidden>
-                <h1 id="titulo-formulario">Novo produto</h1>
-                <p>O formulário vai aparecer aqui.</p>
+    <div class="cabecalho-tela">
+        <h1 id="titulo-lista">Produtos</h1>
+        <button type="button" class="botao botao--primario">+ Adicionar produto</button>
+    </div>
+
+    <div class="ferramentas">
+        <input type="search" class="campo" placeholder="Buscar por nome" aria-label="Buscar produtos">
+    </div>
+
+    <div class="tabela-wrapper">
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Cor</th>
+                    <th scope="col">Estoque</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="produto">
+                            <span class="produto__foto"></span>
+                            <span class="produto__nome">Vestido Midi Floral</span>
+                            <span class="selo">Novidade</span>
+                        </div>
+                    </td>
+                    <td>Roupas</td>
+                    <td>Maison Lume</td>
+                    <td>Rosa</td>
+                    <td><span class="status status--disponivel">12</span></td>
+                    <td class="celula--fixa">R$ 189,90</td>
+                    <td class="celula--fixa">
+                        <button type="button" class="acao">Editar</button>
+                        <button type="button" class="acao acao--perigo">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="produto">
+                            <span class="produto__foto"></span>
+                            <span class="produto__nome">Tênis Urbano Branco</span>
+                        </div>
+                    </td>
+                    <td>Calçados</td>
+                    <td>Urbana</td>
+                    <td>Branco</td>
+                    <td><span class="status status--disponivel">8</span></td>
+                    <td class="celula--fixa">R$ 249,90</td>
+                    <td class="celula--fixa">
+                        <button type="button" class="acao">Editar</button>
+                        <button type="button" class="acao acao--perigo">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="produto">
+                            <span class="produto__foto"></span>
+                            <span class="produto__nome">Bolsa Tiracolo Couro</span>
+                        </div>
+                    </td>
+                    <td>Bolsas</td>
+                    <td>Maison Lume</td>
+                    <td>Caramelo</td>
+                    <td><span class="status status--esgotado">Esgotado</span></td>
+                    <td class="celula--fixa">R$ 329,00</td>
+                    <td class="celula--fixa">
+                        <button type="button" class="acao">Editar</button>
+                        <button type="button" class="acao acao--perigo">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="produto">
+                            <span class="produto__foto"></span>
+                            <span class="produto__nome">Colar Aço Dourado</span>
+                        </div>
+                    </td>
+                    <td>Acessórios</td>
+                    <td>Urbana</td>
+                    <td>Dourado</td>
+                    <td><span class="status status--disponivel">25</span></td>
+                    <td class="celula--fixa">R$ 59,90</td>
+                    <td class="celula--fixa">
+                        <button type="button" class="acao">Editar</button>
+                        <button type="button" class="acao acao--perigo">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="tabela-rodape">Mostrando 4 de 4 produtos</p>
+
+</section>
+
             </section>
 
         </main>

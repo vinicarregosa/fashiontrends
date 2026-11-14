@@ -230,9 +230,7 @@ function renderizarTabela() {
         "Mostrando " + produtos.length + " de " + produtos.length + " produtos";
 }
 
-// ===== Passo 6: telas e formulário =====
-
-const CATEGORIAS = ["Roupas", "Calçados", "Acessórios", "Bolsas"];
+const CATEGORIAS =["Roupas", "Calçados", "Acessórios", "Bolsas"];
 
 const telaLista = document.getElementById("tela-lista");
 const telaFormulario = document.getElementById("tela-formulario");
@@ -265,6 +263,7 @@ function mostrarTela(nome) {
 
 function abrirFormularioNovo() {
     formulario.reset();
+    limparErros();
     tituloFormulario.textContent = "Novo produto";
     mostrarTela("formulario");
     document.getElementById("campo-nome").focus();
@@ -282,12 +281,87 @@ linkProdutos.addEventListener("click", function (evento) {
     voltarParaLista();
 });
 
-// Temporário: o Passo 7 troca este bloco pelo envio de verdade.
+const CAMPOS = ["nome", "categoria", "marca", "cor", "estoque", "preco", "descricao"];
+
+function lerFormulario() {
+    return Object.fromEntries(new FormData(formulario));
+}
+
+function textoVazio(texto) {
+    return texto.trim() === "";
+}
+
+function validarProduto(dados) {
+    const erros = {};
+
+    if (textoVazio(dados.nome)) {
+        erros.nome = "Informe o nome do produto.";
+    }
+
+    if (!CATEGORIAS.includes(dados.categoria)) {
+        erros.categoria = "Escolha uma categoria.";
+    }
+
+    if (textoVazio(dados.marca)) {
+        erros.marca = "Informe a marca.";
+    }
+
+    if (textoVazio(dados.estoque)) {
+        erros.estoque = "Informe o estoque.";
+    } else {
+        const estoque = Number(dados.estoque);
+        if (!Number.isInteger(estoque) || estoque < 0) {
+            erros.estoque = "O estoque deve ser um número inteiro maior ou igual a 0.";
+        }
+    }
+
+    if (textoVazio(dados.preco)) {
+        erros.preco = "Informe o preço.";
+    } else {
+        const preco = Number(dados.preco);
+        if (!Number.isFinite(preco) || preco < 0) {
+            erros.preco = "O preço deve ser um número maior ou igual a 0.";
+        }
+    }
+
+    return erros;
+}
+
+function limparErros() {
+    for (const campo of CAMPOS) {
+        const entrada = document.getElementById("campo-" + campo);
+        document.getElementById("erro-" + campo).textContent = "";
+        entrada.classList.remove("campo--invalido");
+        entrada.removeAttribute("aria-invalid");
+    }
+}
+
+function mostrarErros(erros) {
+    for (const campo of Object.keys(erros)) {
+        const entrada = document.getElementById("campo-" + campo);
+        document.getElementById("erro-" + campo).textContent = erros[campo];
+        entrada.classList.add("campo--invalido");
+        entrada.setAttribute("aria-invalid", "true");
+    }
+}
+
 formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
-});
+    limparErros();
 
-// ===== Início do programa (mantenha sempre no final do arquivo) =====
+    const dados = lerFormulario();
+    const erros = validarProduto(dados);
+    const camposComErro = Object.keys(erros);
+
+    if (camposComErro.length > 0) {
+        mostrarErros(erros);
+        document.getElementById("campo-" + camposComErro[0]).focus();
+        return;
+    }
+
+    console.log("Dados válidos (o Passo 8 vai salvar):", dados);
+});
 
 preencherOpcoes(document.getElementById("campo-categoria"), CATEGORIAS, "Selecione...");
 renderizarTabela();
+

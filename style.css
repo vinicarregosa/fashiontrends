@@ -319,3 +319,12 @@ textarea.campo {
 .botao--secundario:hover {
     background-color: var(--offwhite);
 }
+
+.campo-erro {
+    color: var(--fucsia);
+    font-size: 0.8rem;
+}
+
+.campo--invalido {
+    border-color: var(--fucsia);
+}

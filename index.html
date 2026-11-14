@@ -19,7 +19,7 @@
         <nav class="sidebar__nav" aria-label="Menu Principal">
             <ul>   
                 <li>
-                    <a href="#" class="nav__link nav__link--ativo"> Produtos</a>
+                    <a href="#" class="nav__link nav__link--ativo" id="link-produtos"> Produtos</a>
                 </li>
             </ul>
         </nav>
@@ -43,7 +43,7 @@
 
     <div class="cabecalho-tela">
         <h1 id="titulo-lista">Produtos</h1>
-        <button type="button" class="botao botao--primario">+ Adicionar produto</button>
+        <button type="button" class="botao botao--primario" id="botao-novo">+ Adicionar produto</button>
     </div>
 
     <div class="ferramentas">
@@ -63,87 +63,75 @@
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="produto">
-                            <span class="produto__foto"></span>
-                            <span class="produto__nome">Vestido Midi Floral</span>
-                            
-                        </div>
-                    </td>
-                    <td>Roupas</td>
-                    <td>Maison Lume</td>
-                    <td>Rosa</td>
-                    <td><span class="status status--disponivel">12</span></td>
-                    <td class="celula--fixa">R$ 189,90</td>
-                    <td class="celula--fixa">
-                        <button type="button" class="acao">Editar</button>
-                        <button type="button" class="acao acao--perigo">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="produto">
-                            <span class="produto__foto"></span>
-                            <span class="produto__nome">Tênis Urbano Branco</span>
-                        </div>
-                    </td>
-                    <td>Calçados</td>
-                    <td>Urbana</td>
-                    <td>Branco</td>
-                    <td><span class="status status--disponivel">8</span></td>
-                    <td class="celula--fixa">R$ 249,90</td>
-                    <td class="celula--fixa">
-                        <button type="button" class="acao">Editar</button>
-                        <button type="button" class="acao acao--perigo">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="produto">
-                            <span class="produto__foto"></span>
-                            <span class="produto__nome">Bolsa Tiracolo Couro</span>
-                        </div>
-                    </td>
-                    <td>Bolsas</td>
-                    <td>Maison Lume</td>
-                    <td>Caramelo</td>
-                    <td><span class="status status--esgotado">Esgotado</span></td>
-                    <td class="celula--fixa">R$ 329,00</td>
-                    <td class="celula--fixa">
-                        <button type="button" class="acao">Editar</button>
-                        <button type="button" class="acao acao--perigo">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="produto">
-                            <span class="produto__foto"></span>
-                            <span class="produto__nome">Colar Aço Dourado</span>
-                        </div>
-                    </td>
-                    <td>Acessórios</td>
-                    <td>Urbana</td>
-                    <td>Dourado</td>
-                    <td><span class="status status--disponivel">25</span></td>
-                    <td class="celula--fixa">R$ 59,90</td>
-                    <td class="celula--fixa">
-                        <button type="button" class="acao">Editar</button>
-                        <button type="button" class="acao acao--perigo">Excluir</button>
-                    </td>
-                </tr>
-            </tbody>
+            <tbody id="corpo-tabela"></tbody>
         </table>
     </div>
 
-    <p class="tabela-rodape">Mostrando 4 de 4 produtos</p>
+    <p class="tabela-rodape" id="rodape-tabela"></p>
 
             </section>
 
             <section id="tela-formulario" aria-labelledby="titulo-formulario" hidden>
-                <h1 id="titulo-formulario">Novo produto</h1>
-                <p>O formulário vai aparecer aqui.</p>
+                
+                <div class="cabecalho-tela">
+                    <h1 id="titulo-formulario">Novo produto</h1>
+                </div>
+
+                <form id="formulario-produto" class="formulario" novalidate>
+                    <div class="campo-grupo">
+                        <label for="campo-nome"> Nome do produto * </label>
+                        <input type="text" id="campo-nome" name="name" class="campo" autocomplete="off" aria-describedby="erro-nome">
+                            <p class="campo-erro" id="erro-nome" aria-live="polite"> </p>
+                     </div>
+
+                     <div class="campo-grupo">
+                        <label for="campo-categoria">Categoria * </label>
+                        <select id="campo-categoria" name="categoria" class="campo" aria-describedby="erro-categoria"> </select>
+                            <p class="campo-erro" id="erro-categoria" aria-live="polite"> </p>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="campo-marca"> Marca * </label>
+                        <input type="text" id="campo-marca" name="marca" class="campo" autocomplete="off" aria-describedby="erro-marca">
+                            <p class="campo-erro" id="erro-marca" aria-live="polite"> </p>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="campo-cor"> Cor * </label>
+                        <input type="text" id="campo-cor" name="cor" class="campo" autocomplete="off" aria-describedby="erro-cor">
+                            <p class="campo-erro" id="erro-cor" aria-live="polite"> </p>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="campo-cor"> Cor * </label>
+                        <input type="text" id="campo-cor" name="cor" class="campo" autocomplete="off" aria-describedby="erro-cor">
+                            <p class="campo-erro" id="erro-cor" aria-live="polite"> </p>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="campo-estoque"> Estoque * </label>
+                        <input type="number" id="campo-estoque" name="estoque" class="campo" min="0" step="1" aria-describedby="erro-estoque">
+                            <p class="campo-erro" id="erro-estoque" aria-live="polite"> </p>
+
+                    </div> 
+                    <div class="campo-grupo">
+                        <label for="campo-preço"> Preço (R$)* </label>
+                        <input type="number" id="campo-preço" name="preço" class="campo" min="
+                        0" step="0.01" aria-describedby="erro-estoque">
+                            <p class="campo-erro" id="erro-estoque" aria-live="polite"> </p>
+
+                    <div class="campo-grupo campo-grupo-largo">
+                        <label for="campo-descricao" name="campo-descricao">Descrição </label>
+                        <textarea id="campo-descricao" name="campo-descricao" class="campo" rows="4" aria-describedby="erro-descricao"> </textarea>
+                        <p class="campo-erro" id="erro-descricao" aria-live="polite"> </p>
+
+                    </div> 
+
+                    <div class="formulario__acoes">
+                        <button type="button" class="botao botao--secundario" id="botao-cancelar">Cancelar</button>
+                        <button type="submit" class="botao botao-primario" id="botao-salvar"> Cadastrar produto </button>
+                    </div>
+                </form>
             </section>
 
         </main>

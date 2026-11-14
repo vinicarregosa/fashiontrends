@@ -111,3 +111,120 @@ function iniciarDados() {
 }
 
 iniciarDados();
+
+const corpoTabela = document.getElementById('corpo-tabela');
+const rodapeTabela = document.getElementById('rodape-tabela');
+
+function formatarPreco(valor){
+    return valor.toLocaleString("pt-BR", {style: "currency", currency: "BRL"});
+}
+
+function criarCedula(texto) {
+    const td = document.createElement("td");
+    td.textContent = texto;
+}
+
+function criarCedulaProduto() {
+    const td = document.createElement("td");
+
+    const divProduto = document.createElement("div");
+    divProduto.className = "produto";
+
+    const foto = document.createElement("span");
+    foto.className = produto__foto;
+
+    const nome = document.createElement("span");
+    foto.className = produto__nome;
+    nome.textContent = produto.nome;
+
+    divProduto.appendChild(foto);
+    divProduto.appendChild(nome);
+    td.appendChild(divProduto);
+
+    return td;
+}
+
+function criarCedulaProduto(produto) {
+    const td = document.createElement("td")
+    const status = document.createElement("span")
+
+    if(produto === 0) {
+        status.className = "status status--esgotado";
+        status.textContent = "Esgotado";
+    } else {
+        status.className = "status status--disponivel";
+        status.textContent = produto.estoque;
+    }
+
+    td.appendChild(status);
+    return td;
+}
+
+function criarCelulaPreco(produto) {
+    const td = criarCelula(formatarPreco(produto.preco));
+    td.className = "celula--fixa";
+    return td;
+}
+
+function criarCelulaAcoes() {
+    const td = document.createElement("td");
+    td.className = "celula--fixa";
+
+    const botaoEditar = document.createElement("button");
+    botaoEditar.type = "button";
+    botaoEditar.className = "acao";
+    botaoEditar.textContent = "Editar";
+
+    const botaoExcluir = document.createElement("button");
+    botaoExcluir.type = "button";
+    botaoExcluir.className = "acao acao--perigo";
+    botaoExcluir.textContent = "Excluir";
+
+    td.appendChild(botaoEditar);
+    td.appendChild(botaoExcluir);
+    return td;
+}
+
+function criarLinha(produto) {
+    const tr = document.createElement("tr");
+    tr.dataset.id = produto.id;
+
+    tr.appendChild(criarCelulaProduto(produto));
+    tr.appendChild(criarCelula(produto.categoria));
+    tr.appendChild(criarCelula(produto.marca));
+    tr.appendChild(criarCelula(produto.cor));
+    tr.appendChild(criarCelulaEstoque(produto));
+    tr.appendChild(criarCelulaPreco(produto));
+    tr.appendChild(criarCelulaAcoes());
+
+    return tr;
+}
+
+function criarLinhaVazia() {
+    const tr = document.createElement("tr");
+
+    const td = document.createElement("td");
+    td.colSpan = 7;
+    td.className = "tabela__vazio";
+    td.textContent = "Nenhum produto cadastrado.";
+
+    tr.appendChild(td);
+    return tr;
+}
+
+function renderizarTabela() {
+    const produtos = carregarProdutos();
+
+    corpoTabela.replaceChildren();
+
+    if (produtos.length === 0) {
+        corpoTabela.appendChild(criarLinhaVazia());
+    }
+
+    for (const produto of produtos) {
+        corpoTabela.appendChild(criarLinha(produto));
+    }
+
+    rodapeTabela.textContent =
+        "Mostrando " + produtos.length + " de " + produtos.length + " produtos";
+}

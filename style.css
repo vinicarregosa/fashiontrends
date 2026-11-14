@@ -268,3 +268,54 @@ button {
     font-size: 0.85rem;
     color: var(--cinza);
 }
+[hidden] {
+    display: none !important;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 24px;
+    max-width: 760px;
+    padding: 24px;
+    background-color: var(--branco);
+    border: 1px solid var(--champagne);
+    border-radius: 12px;
+
+}
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.campo-grupo-largo {
+    grid-column: 1 / -1;
+}
+.campo-grupo label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.formulario .campo {
+    max-width: none;
+}
+textrea.campo {
+    min-height: 96px;
+    resize: vertical;
+}
+
+.formulario_acoes {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px
+}
+.botao--secundario {
+    background-color: var(--branco);
+    color: var(--preto);
+    border: 1px solid var(--champagne);
+}
+.botao--secundario:hover {
+    background-color: var(--offwhite);
+}

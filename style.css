@@ -290,7 +290,7 @@ button {
     min-width: 0;
 }
 
-.campo-grupo-largo {
+.campo-grupo--largo {
     grid-column: 1 / -1;
 }
 .campo-grupo label {
@@ -300,16 +300,16 @@ button {
 .formulario .campo {
     max-width: none;
 }
-textrea.campo {
+textarea.campo {
     min-height: 96px;
     resize: vertical;
 }
 
-.formulario_acoes {
+.formulario__acoes {
     grid-column: 1 / -1;
     display: flex;
     justify-content: flex-end;
-    gap: 12px
+    gap: 12px;
 }
 .botao--secundario {
     background-color: var(--branco);

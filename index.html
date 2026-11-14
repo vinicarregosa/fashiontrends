@@ -79,57 +79,50 @@
 
                 <form id="formulario-produto" class="formulario" novalidate>
                     <div class="campo-grupo">
-                        <label for="campo-nome"> Nome do produto * </label>
-                        <input type="text" id="campo-nome" name="name" class="campo" autocomplete="off" aria-describedby="erro-nome">
-                            <p class="campo-erro" id="erro-nome" aria-live="polite"> </p>
-                     </div>
-
-                     <div class="campo-grupo">
-                        <label for="campo-categoria">Categoria * </label>
-                        <select id="campo-categoria" name="categoria" class="campo" aria-describedby="erro-categoria"> </select>
-                            <p class="campo-erro" id="erro-categoria" aria-live="polite"> </p>
+                        <label for="campo-nome">Nome do produto *</label>
+                        <input type="text" id="campo-nome" name="nome" class="campo" autocomplete="off" aria-describedby="erro-nome">
+                        <p class="campo-erro" id="erro-nome" aria-live="polite"></p>
                     </div>
 
                     <div class="campo-grupo">
-                        <label for="campo-marca"> Marca * </label>
+                        <label for="campo-categoria">Categoria *</label>
+                        <select id="campo-categoria" name="categoria" class="campo" aria-describedby="erro-categoria"></select>
+                        <p class="campo-erro" id="erro-categoria" aria-live="polite"></p>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="campo-marca">Marca *</label>
                         <input type="text" id="campo-marca" name="marca" class="campo" autocomplete="off" aria-describedby="erro-marca">
-                            <p class="campo-erro" id="erro-marca" aria-live="polite"> </p>
+                        <p class="campo-erro" id="erro-marca" aria-live="polite"></p>
                     </div>
 
                     <div class="campo-grupo">
-                        <label for="campo-cor"> Cor * </label>
+                        <label for="campo-cor">Cor</label>
                         <input type="text" id="campo-cor" name="cor" class="campo" autocomplete="off" aria-describedby="erro-cor">
-                            <p class="campo-erro" id="erro-cor" aria-live="polite"> </p>
+                        <p class="campo-erro" id="erro-cor" aria-live="polite"></p>
                     </div>
 
                     <div class="campo-grupo">
-                        <label for="campo-cor"> Cor * </label>
-                        <input type="text" id="campo-cor" name="cor" class="campo" autocomplete="off" aria-describedby="erro-cor">
-                            <p class="campo-erro" id="erro-cor" aria-live="polite"> </p>
-                    </div>
-
-                    <div class="campo-grupo">
-                        <label for="campo-estoque"> Estoque * </label>
+                        <label for="campo-estoque">Estoque *</label>
                         <input type="number" id="campo-estoque" name="estoque" class="campo" min="0" step="1" aria-describedby="erro-estoque">
-                            <p class="campo-erro" id="erro-estoque" aria-live="polite"> </p>
+                        <p class="campo-erro" id="erro-estoque" aria-live="polite"></p>
+                    </div>
 
-                    </div> 
                     <div class="campo-grupo">
-                        <label for="campo-preço"> Preço (R$)* </label>
-                        <input type="number" id="campo-preço" name="preço" class="campo" min="
-                        0" step="0.01" aria-describedby="erro-estoque">
-                            <p class="campo-erro" id="erro-estoque" aria-live="polite"> </p>
+                        <label for="campo-preco">Preço (R$) *</label>
+                        <input type="number" id="campo-preco" name="preco" class="campo" min="0" step="0.01" aria-describedby="erro-preco">
+                        <p class="campo-erro" id="erro-preco" aria-live="polite"></p>
+                    </div>
 
-                    <div class="campo-grupo campo-grupo-largo">
-                        <label for="campo-descricao" name="campo-descricao">Descrição </label>
-                        <textarea id="campo-descricao" name="campo-descricao" class="campo" rows="4" aria-describedby="erro-descricao"> </textarea>
-                        <p class="campo-erro" id="erro-descricao" aria-live="polite"> </p>
-
-                    </div> 
+                    <div class="campo-grupo campo-grupo--largo">
+                        <label for="campo-descricao">Descrição</label>
+                        <textarea id="campo-descricao" name="descricao" class="campo" rows="4" aria-describedby="erro-descricao"></textarea>
+                        <p class="campo-erro" id="erro-descricao" aria-live="polite"></p>
+                    </div>
 
                     <div class="formulario__acoes">
                         <button type="button" class="botao botao--secundario" id="botao-cancelar">Cancelar</button>
-                        <button type="submit" class="botao botao-primario" id="botao-salvar"> Cadastrar produto </button>
+                        <button type="submit" class="botao botao--primario" id="botao-salvar">Cadastrar produto</button>
                     </div>
                 </form>
             </section>

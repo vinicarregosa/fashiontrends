@@ -119,22 +119,23 @@ function formatarPreco(valor){
     return valor.toLocaleString("pt-BR", {style: "currency", currency: "BRL"});
 }
 
-function criarCedula(texto) {
+function criarCelula(texto) {
     const td = document.createElement("td");
     td.textContent = texto;
+    return td;
 }
 
-function criarCedulaProduto() {
+function criarCelulaProduto(produto) {
     const td = document.createElement("td");
 
     const divProduto = document.createElement("div");
     divProduto.className = "produto";
 
     const foto = document.createElement("span");
-    foto.className = produto__foto;
+    foto.className = "produto__foto";
 
     const nome = document.createElement("span");
-    foto.className = produto__nome;
+    nome.className = "produto__nome";
     nome.textContent = produto.nome;
 
     divProduto.appendChild(foto);
@@ -144,11 +145,11 @@ function criarCedulaProduto() {
     return td;
 }
 
-function criarCedulaProduto(produto) {
-    const td = document.createElement("td")
-    const status = document.createElement("span")
+function criarCelulaEstoque(produto) {
+    const td = document.createElement("td");
+    const status = document.createElement("span");
 
-    if(produto === 0) {
+    if (produto.estoque === 0) {
         status.className = "status status--esgotado";
         status.textContent = "Esgotado";
     } else {
@@ -228,3 +229,65 @@ function renderizarTabela() {
     rodapeTabela.textContent =
         "Mostrando " + produtos.length + " de " + produtos.length + " produtos";
 }
+
+// ===== Passo 6: telas e formulário =====
+
+const CATEGORIAS = ["Roupas", "Calçados", "Acessórios", "Bolsas"];
+
+const telaLista = document.getElementById("tela-lista");
+const telaFormulario = document.getElementById("tela-formulario");
+const tituloFormulario = document.getElementById("titulo-formulario");
+const formulario = document.getElementById("formulario-produto");
+const botaoNovo = document.getElementById("botao-novo");
+const botaoCancelar = document.getElementById("botao-cancelar");
+const linkProdutos = document.getElementById("link-produtos");
+
+function preencherOpcoes(select, opcoes, textoPadrao) {
+    select.replaceChildren();
+
+    const padrao = document.createElement("option");
+    padrao.value = "";
+    padrao.textContent = textoPadrao;
+    select.appendChild(padrao);
+
+    for (const opcao of opcoes) {
+        const item = document.createElement("option");
+        item.value = opcao;
+        item.textContent = opcao;
+        select.appendChild(item);
+    }
+}
+
+function mostrarTela(nome) {
+    telaLista.hidden = nome !== "lista";
+    telaFormulario.hidden = nome !== "formulario";
+}
+
+function abrirFormularioNovo() {
+    formulario.reset();
+    tituloFormulario.textContent = "Novo produto";
+    mostrarTela("formulario");
+    document.getElementById("campo-nome").focus();
+}
+
+function voltarParaLista() {
+    mostrarTela("lista");
+}
+
+botaoNovo.addEventListener("click", abrirFormularioNovo);
+botaoCancelar.addEventListener("click", voltarParaLista);
+
+linkProdutos.addEventListener("click", function (evento) {
+    evento.preventDefault();
+    voltarParaLista();
+});
+
+// Temporário: o Passo 7 troca este bloco pelo envio de verdade.
+formulario.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+});
+
+// ===== Início do programa (mantenha sempre no final do arquivo) =====
+
+preencherOpcoes(document.getElementById("campo-categoria"), CATEGORIAS, "Selecione...");
+renderizarTabela();

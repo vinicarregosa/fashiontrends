@@ -359,8 +359,58 @@ formulario.addEventListener("submit", function (evento) {
         return;
     }
 
-    console.log("Dados válidos (o Passo 8 vai salvar):", dados);
+    cadastrarProduto(dados);
+    renderizarTabela();
+    voltarParaLista();
+    mostrarAviso("Produto cadastrado com sucesso.");
 });
+
+// ===== Passo 8: cadastrar =====
+
+const aviso = document.getElementById("aviso");
+let temporizadorAviso = null;
+
+function mostrarAviso(texto) {
+    aviso.textContent = texto;
+    aviso.hidden = false;
+
+    clearTimeout(temporizadorAviso);
+    temporizadorAviso = setTimeout(function () {
+        aviso.hidden = true;
+    }, 4000);
+}
+
+function gerarIdUnico(produtos) {
+    let id = gerarId();
+
+    while (produtos.some((produto) => produto.id === id)) {
+        id = gerarId();
+    }
+
+    return id;
+}
+
+function converterDados(dados, id, imagem) {
+    return {
+        id: id,
+        nome: dados.nome.trim(),
+        categoria: dados.categoria,
+        marca: dados.marca.trim(),
+        cor: dados.cor.trim(),
+        estoque: Number(dados.estoque),
+        preco: Math.round(Number(dados.preco) * 100) / 100,
+        descricao: dados.descricao.trim(),
+        imagem: imagem
+    };
+}
+
+function cadastrarProduto(dados) {
+    const produtos = carregarProdutos();
+    const novo = converterDados(dados, gerarIdUnico(produtos), "");
+
+    produtos.unshift(novo);
+    salvarProdutos(produtos);
+}
 
 preencherOpcoes(document.getElementById("campo-categoria"), CATEGORIAS, "Selecione...");
 renderizarTabela();

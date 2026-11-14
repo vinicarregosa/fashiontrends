@@ -328,3 +328,13 @@ textarea.campo {
 .campo--invalido {
     border-color: var(--fucsia);
 }
+
+/* 16. Aviso (sucesso ou erro) */
+.aviso {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background-color: var(--branco);
+    border: 1px solid var(--champagne);
+    border-left: 4px solid var(--salvia);
+    border-radius: 8px;
+}

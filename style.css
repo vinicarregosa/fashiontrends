@@ -338,3 +338,184 @@ textarea.campo {
     border-left: 4px solid var(--salvia);
     border-radius: 8px;
 }
+
+/* 17. Filtros */
+.ferramentas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ferramentas .campo {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 110px;
+    max-width: 220px;
+    font-size: 0.9rem;
+}
+
+.ferramentas .campo--busca {
+    flex-basis: 180px;
+    max-width: 300px;
+}
+
+.ferramentas .campo--select {
+    flex-basis: 175px;
+}
+
+/* 18. Paginação */
+.paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+
+.botao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 19. Resumo do estoque e produto esgotado */
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.resumo__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    background-color: var(--branco);
+    border: 1px solid var(--champagne);
+    border-radius: 12px;
+}
+
+.resumo__rotulo {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--cinza);
+}
+
+.resumo__valor {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+}
+
+.resumo__item--alerta .resumo__valor {
+    color: var(--fucsia);
+}
+
+.linha--esgotada .produto__nome {
+    color: var(--cinza);
+}
+
+.linha--esgotada .produto__foto {
+    opacity: 0.5;
+}
+
+.campo-dica {
+    color: var(--cinza);
+    font-size: 0.8rem;
+}
+
+/* 20. Foto do produto e aviso de erro */
+img.produto__foto {
+    object-fit: cover;
+}
+
+.previa {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.previa__imagem {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border: 1px solid var(--champagne);
+    border-radius: 8px;
+}
+
+.aviso--erro {
+    border-left-color: var(--fucsia);
+}
+
+/* 21. Camada que escurece a tela quando o menu está aberto (só no celular) */
+.sobreposicao {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background-color: rgba(17, 17, 17, 0.5);
+}
+
+/* 22. Celular (deixe SEMPRE por último no arquivo) */
+@media (max-width: 768px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 30;
+        width: var(--largura-sidebar);
+        transform: translateX(-100%);
+        visibility: hidden;
+        transition: transform 0.25s ease, visibility 0.25s;
+    }
+
+    .sidebar--aberta {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
+    .sobreposicao.sobreposicao--visivel {
+        display: block;
+    }
+
+    .topbar {
+        padding: 12px 16px;
+    }
+
+    .topbar__menu {
+        display: block;
+    }
+
+    .principal {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .resumo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ferramentas .campo {
+        flex-basis: 100%;
+        max-width: none;
+        font-size: 1rem;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .acao {
+        padding: 8px 10px;
+    }
+}
